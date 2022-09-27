@@ -46,9 +46,9 @@ export const FeaturedRow = ({ id, title, description }) => {
         }}
         showsHorizontalScrollIndicator={false}
       >
-        {restaurants?.map((restaurant) => (
+        {restaurants?.map((restaurant, i) => (
           <RestaurantCard
-            key={restaurant._id}
+            key={i}
             id={restaurant._id}
             imgUrl={restaurant.image}
             address={restaurant.address}

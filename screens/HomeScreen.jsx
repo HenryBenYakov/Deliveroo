@@ -6,7 +6,7 @@ import {
   TextInput,
   ScrollView,
 } from "react-native";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
   UserIcon,
@@ -19,14 +19,8 @@ import { FeaturedRow } from "../components/FeaturedRow";
 import client from "../sanity";
 
 export const HomeScreen = () => {
-  const navigation = useNavigation();
   const [featuredCategories, setFeaturedCategories] = useState([]);
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
+  const navigation = useNavigation();
 
   useEffect(() => {
     client
@@ -44,6 +38,12 @@ export const HomeScreen = () => {
       .then((data) => {
         setFeaturedCategories(data);
       });
+  }, []);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
   }, []);
 
   return (
